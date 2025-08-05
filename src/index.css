@@ -1,0 +1,22 @@
+@import "tailwindcss";
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.form-group label {
+  color: #eee;
+  font-weight: 500;
+}
+
+.form-group input {
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background-color: #444;
+  color: #eee;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  outline: 1px solid 444;
+}
