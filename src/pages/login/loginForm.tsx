@@ -18,8 +18,8 @@ export const LoginForm = () => {
   };
 
   return (
-    <div className="flex flex-col w-[600px] h-[350px] bg-white self-center rounded-md p-6">
-      <div className="flex flex-col gap-4">
+    <div className="flex  w-[600px] h-[350px] bg-white rounded-md p-6">
+      <div className="flex flex-col h-full w-full gap-4">
         <div className="flex flex-col font-medium gap-2">
           <label>Email</label>
           <input
@@ -52,13 +52,15 @@ export const LoginForm = () => {
             <p className="text-red-500">Senha é obrigatória</p>
           )}
         </div>
-        <button
-          type="submit"
-          className="flex bg-[#1aaf79] w-full p-4 rounded-lg justify-center"
-          onClick={() => handleSubmit(onSubmit)()}
-        >
-          <p className="text-white font-bold">Entrar</p>
-        </button>
+        <div className="flex h-full items-end">
+          <button
+            type="submit"
+            className="flex bg-[#1aaf79] w-full p-4 rounded-lg justify-center self-end"
+            onClick={() => handleSubmit(onSubmit)()}
+          >
+            <p className="text-white font-bold">Entrar</p>
+          </button>
+        </div>
       </div>
     </div>
   );
