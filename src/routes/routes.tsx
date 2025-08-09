@@ -8,6 +8,9 @@ export const router = createBrowserRouter([
 
   {
     element: <PrivateRoute />,
-    children: [{ path: "/customers-list", element: <CustomersList /> }],
+    children: [
+      { path: "/customers-list", element: <CustomersList /> },
+      { path: "/customers-list/:id", element: <CustomersList /> },
+    ],
   },
 ]);

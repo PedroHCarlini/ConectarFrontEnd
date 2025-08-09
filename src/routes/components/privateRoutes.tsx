@@ -1,6 +1,9 @@
+// src/components/PrivateRoute.tsx
 import { Navigate, Outlet } from "react-router-dom";
-import { isTokenValid } from "./routes-guard";
+import { isTokenValid } from "./validateAuthToken";
 
 export const PrivateRoute = () => {
-  return isTokenValid() ? <Outlet /> : <Navigate to="/" replace />;
+  const valid = isTokenValid();
+  console.log("[PrivateRoute] token valid:", valid);
+  return valid ? <Outlet /> : <Navigate to="/" replace />;
 };
