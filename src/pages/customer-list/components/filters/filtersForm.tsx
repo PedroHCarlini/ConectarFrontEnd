@@ -43,7 +43,7 @@ export const FiltersForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="grid grid-cols-4 h-full w-full gap-4 py-4"
+      className="grid grid-cols-1 md:grid-cols-4 h-full w-full gap-4 py-4"
     >
       <div className="flex flex-col font-normal gap-2">
         <label>Buscar por nome</label>
@@ -84,7 +84,7 @@ export const FiltersForm = () => {
         />
       </div>
 
-      <div className="flex flex-col font-normal gap-2 col-span-1">
+      <div className="flex flex-col font-normal gap-2">
         <label>Buscar por Conectar+</label>
         <Controller
           name="conectaPlus"
@@ -107,7 +107,7 @@ export const FiltersForm = () => {
         />
       </div>
 
-      <div className="flex w-full items-center justify-end gap-4 col-span-4">
+      <div className="flex w-full items-center justify-end gap-4 col-span-1 md:col-span-4">
         <div className=" mt-2">
           <button
             type="button"

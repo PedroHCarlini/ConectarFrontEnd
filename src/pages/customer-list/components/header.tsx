@@ -19,7 +19,7 @@ export const Header = () => {
   ];
 
   return (
-    <div className="flex flex-wrap px-4 h-16">
+    <div className="flex flex-wrap px-4 h-16 min-w-[550px]">
       {tabsList.map((tab) => (
         <button
           key={tab.id}
