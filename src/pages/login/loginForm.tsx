@@ -1,5 +1,6 @@
 import validator from "validator";
 import { useForm } from "react-hook-form";
+import { useLogin } from "./hooks/useLogin";
 
 interface LoginFormData {
   email: string;
@@ -13,8 +14,10 @@ export const LoginForm = () => {
     formState: { errors },
   } = useForm<LoginFormData>();
 
+  const { handleLogin } = useLogin();
+
   const onSubmit = (data: LoginFormData) => {
-    console.log(data);
+    handleLogin(data as unknown as Record<string, string>);
   };
 
   return (
