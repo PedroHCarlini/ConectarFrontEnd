@@ -3,30 +3,37 @@ import TagInput from "../../components/tagInput";
 import Select from "react-select";
 import { conectaOptions, statusOptions } from "./store";
 import { selectStyles } from "../../shared/selectStyles";
+import { useMutationCustomer } from "./hooks/useMutationCustomer";
+import type { Customer } from "../../pages/customer-list/store";
 
 export interface ModalFormData {
   legalName: string;
   cnpj: string;
   customerName: string;
-  status: string | null;
-  conectaPlus: string | null;
+  status: boolean | null;
+  conectaPlus: boolean | null;
   tags: string[];
 }
 
-export const CustomersForm = () => {
+export const CustomersForm = ({ customer }: { customer: Customer | null }) => {
+  console.log(customer);
   const { handleSubmit, control, reset } = useForm<ModalFormData>({
     defaultValues: {
-      legalName: "",
-      cnpj: "",
-      customerName: "",
-      status: null,
-      conectaPlus: null,
-      tags: [],
+      legalName: customer?.legalName || "",
+      cnpj: customer?.cnpj || "",
+      customerName: customer?.customerName || "",
+      status: customer?.status || null,
+      conectaPlus: customer?.conectaPlus || null,
+      tags: customer?.tags || [],
     },
   });
+  const { handleRequest } = useMutationCustomer();
 
   const onSubmit = (data: ModalFormData) => {
-    console.log(data);
+    if (customer?.id) {
+      return handleRequest({ id: customer.id, value: data });
+    }
+    return handleRequest({ value: data });
   };
 
   const onClear = () => reset();

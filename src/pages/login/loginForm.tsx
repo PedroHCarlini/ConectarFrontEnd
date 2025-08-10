@@ -50,13 +50,13 @@ export const LoginForm = () => {
           <div className="flex items-center">
             <input
               type={showPassword ? "text" : "password"}
-              className={`p-3 w-[85%] rounded-l-md outline-none bg-white border-2 border-gray-400 border-opacity-50${
+              className={`p-3 w-[85%] rounded-l-md outline-none bg-white border-2 border-r-0 border-gray-400 border-opacity-50${
                 errors.password ? "border-red-500" : ""
               }`}
               {...register("password", { required: true })}
             />
             <button
-              className="p-3 w-[15%] flex items-center justify-center rounded-r-md border border-[#1aaf79] bg-[#1aaf79]/30 cursor-pointer"
+              className="p-3 w-[15%] flex items-center justify-center rounded-r-md border border-l-0 border-[#1aaf79] bg-[#1aaf79]/30 cursor-pointer"
               type="button"
               onClick={() => setShowPassword(!showPassword)}
             >
@@ -78,7 +78,7 @@ export const LoginForm = () => {
         <div className="flex h-full items-end">
           <button
             type="submit"
-            className="flex bg-[#1aaf79] w-full p-4 rounded-lg justify-center self-end "
+            className="flex cursor-pointer bg-[#1aaf79] w-full p-4 rounded-lg justify-center self-end "
             onClick={() => handleSubmit(onSubmit)()}
           >
             <p className="text-white font-bold">Entrar</p>

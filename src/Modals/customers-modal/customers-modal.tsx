@@ -1,23 +1,22 @@
+import { useAtom } from "jotai";
 import { Modal } from "../../components/modal";
 import type { Customer } from "../../pages/customer-list/store";
 import { CustomersForm } from "./customers-form";
+import { toggleModalAtom } from "./store";
 
 export const CustomersModal = ({
-  isModalOpen,
   selectedCustomer,
-  setIsModalOpen,
 }: {
-  isModalOpen: boolean;
   selectedCustomer: Customer | null;
-  setIsModalOpen: (value: boolean) => void;
 }) => {
+  const [toggleModal, setToggleModal] = useAtom(toggleModalAtom);
   return (
     <Modal
-      isOpen={isModalOpen}
-      onClickClose={() => setIsModalOpen(false)}
+      isOpen={toggleModal}
+      onClickClose={() => setToggleModal(false)}
       title={selectedCustomer ? "Editar cliente" : "Criar novo cliente"}
     >
-      <CustomersForm />
+      <CustomersForm customer={selectedCustomer || null} />
     </Modal>
   );
 };

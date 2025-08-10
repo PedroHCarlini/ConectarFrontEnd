@@ -1,4 +1,4 @@
-import { useAtomValue } from "jotai";
+import { useAtomValue, useSetAtom } from "jotai";
 import {
   customersAtom,
   customersLoadingAtom,
@@ -12,11 +12,12 @@ import {
 } from "@tanstack/react-table";
 import { useState } from "react";
 import { CustomersModal } from "../../../../Modals/customers-modal/customers-modal";
+import { toggleModalAtom } from "../../../../Modals/customers-modal/store";
 
 export const Table = () => {
   const customers = useAtomValue(customersAtom);
   const customersLoading = useAtomValue(customersLoadingAtom);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleModal = useSetAtom(toggleModalAtom);
   const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(
     null
   );
@@ -68,7 +69,7 @@ export const Table = () => {
         <div className="flex w-full justify-end mb-4">
           <button
             className="px-10 py-2 bg-white border rounded cursor-pointer"
-            onClick={() => setIsModalOpen(true)}
+            onClick={() => toggleModal(true)}
           >
             Novo
           </button>
@@ -97,7 +98,7 @@ export const Table = () => {
                 key={row.id}
                 className="hover:bg-gray-50 cursor-pointer"
                 onClick={() => {
-                  setIsModalOpen(true);
+                  toggleModal(true);
                   setSelectedCustomer(row.original);
                 }}
               >
@@ -122,11 +123,7 @@ export const Table = () => {
           </tbody>
         </table>
       </div>
-      <CustomersModal
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
-        selectedCustomer={selectedCustomer}
-      />
+      <CustomersModal selectedCustomer={selectedCustomer} />
     </>
   );
 };

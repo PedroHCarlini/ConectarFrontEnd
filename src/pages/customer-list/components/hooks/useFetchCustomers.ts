@@ -16,7 +16,7 @@ export const useFetchCustomers = () => {
   const formfilters = useAtomValue(formFiltersAtom);
 
   const { data, isFetching } = useQuery({
-    queryKey: [JSON.stringify(formfilters)],
+    queryKey: ["customers-list", JSON.stringify(formfilters)],
     queryFn: () => {
       return getCustomers(removeEmptyFields(formfilters)).catch(
         ({ response }: AxiosError) => {
