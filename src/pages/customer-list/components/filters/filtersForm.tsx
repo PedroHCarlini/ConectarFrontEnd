@@ -1,12 +1,8 @@
 import { useForm, Controller } from "react-hook-form";
 import Select from "react-select";
-import {
-  conectaOptions,
-  formFiltersAtom,
-  selectStyles,
-  statusOptions,
-} from "../../store";
+import { conectaOptions, formFiltersAtom, statusOptions } from "../../store";
 import { useSetAtom } from "jotai";
+import { selectStyles } from "../../../../shared/selectStyles";
 
 export interface FiltersFormData {
   name: string;
@@ -49,7 +45,8 @@ export const FiltersForm = () => {
         <label>Buscar por nome</label>
         <input
           type="text"
-          className="p-3 rounded outline-none bg-white border-2 border-gray-400 border-opacity-50"
+          className="p-2 rounded w-full outline-none bg-white border-2 border-gray-400/40"
+          placeholder="Digite o nome do cliente"
           {...register("name")}
         />
       </div>
@@ -58,7 +55,8 @@ export const FiltersForm = () => {
         <label>Buscar por CNPJ</label>
         <input
           type="text"
-          className="p-3 rounded outline-none bg-white border-2 border-gray-400 border-opacity-50"
+          className="p-2 rounded w-full outline-none bg-white border-2 border-gray-400/40"
+          placeholder="Digite o CNPJ do cliente"
           {...register("cnpj")}
         />
       </div>
