@@ -16,7 +16,6 @@ export interface ModalFormData {
 }
 
 export const CustomersForm = ({ customer }: { customer: Customer | null }) => {
-  console.log(customer);
   const { handleSubmit, control, reset } = useForm<ModalFormData>({
     defaultValues: {
       legalName: customer?.legalName || "",
